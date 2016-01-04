@@ -1,0 +1,11 @@
+/*
+ * Allow users in vagrant group to manage libvirt without authentication.
+ * Copy this file to /usr/share/polkit-1/rules.d/ to activate.
+ */
+polkit.addRule(function(action, subject) {
+  if ((action.id == "org.libvirt.unix.manage"
+    || action.id == "org.libvirt.unix.monitor")
+    && subject.isInGroup("vagrant")) {
+    return polkit.Result.YES;
+  }
+});
