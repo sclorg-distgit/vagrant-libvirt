@@ -5,7 +5,7 @@
 
 Name: %{?scl_prefix}%{vagrant_plugin_name}
 Version: 0.0.30
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: libvirt provider for Vagrant
 Group: Development/Languages
 License: MIT
@@ -32,7 +32,7 @@ Requires: libvirt
 # vagrant-libvirt supports only kvm and qemu for now.
 #   https://github.com/pradels/vagrant-libvirt#provider-options
 # libvirt-daemon-kvm not available on RHEL 6
-%if 0%{?rhel} >= 7 
+%if 0%{?rhel} >= 7
 Requires: libvirt-daemon-kvm
 %else
 Requires: qemu-kvm
@@ -82,7 +82,7 @@ cp -a .%{vagrant_plugin_dir}/* \
         %{buildroot}%{vagrant_plugin_dir}/
 
 # polkit rule for vagrant group.
-#mkdir -p %{buildroot}%{_datadir}/polkit-1/rules.d 
+#mkdir -p %{buildroot}%{_datadir}/polkit-1/rules.d
 #install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/polkit-1/rules.d/
 
 # polkit example as doc
@@ -104,12 +104,12 @@ sed -i '1d' %{buildroot}%{vagrant_plugin_instdir}/Rakefile
 getent group vagrant >/dev/null || groupadd -r vagrant
 
 %posttrans
-%{?scl:scl enable %{scl} - << \EOF}
+%{?scl:env -i - scl enable %{scl} - << \EOF}
 %vagrant_plugin_register %{vagrant_plugin_name}
 %{?scl:EOF}
 
 %preun
-%{?scl:scl enable %{scl} - << \EOF}
+%{?scl:env -i - scl enable %{scl} - << \EOF}
 %vagrant_plugin_unregister %{vagrant_plugin_name}
 %{?scl:EOF}
 
@@ -136,6 +136,9 @@ getent group vagrant >/dev/null || groupadd -r vagrant
 %{vagrant_plugin_instdir}/spec
 
 %changelog
+* Tue Jan 05 2016 Pavel Valena <pvalena@redhat.com> - 0.0.30-3
+- Clear environment for scriptlets
+
 * Thu Aug 06 2015 Vít Ondruch <vondruch@redhat.com> - 0.0.30-2
 - Rebuild to use correct version of scl-utils.
 - Resolves: rhbz#1250147
