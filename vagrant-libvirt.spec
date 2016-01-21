@@ -16,12 +16,6 @@ Requires(pre): shadow-utils
 Requires(posttrans): %{?scl_prefix}vagrant
 Requires(preun): %{?scl_prefix}vagrant
 
-# Until we have scl-utils that generates this
-Requires: %{?scl_prefix}runtime
-Requires(pre): %{?scl_prefix}runtime
-Requires(posttrans): %{?scl_prefix}runtime
-Requires(preun): %{?scl_prefix}runtime
-
 Requires: %{?scl_prefix}rubygem(fog-libvirt) >= 0.0.1
 Requires: %{?scl_prefix}rubygem(fog-libvirt) < 0.1
 Requires: %{?scl_prefix_ruby}ruby(rubygems)
@@ -138,6 +132,7 @@ getent group vagrant >/dev/null || groupadd -r vagrant
 %changelog
 * Thu Jan 21 2016 Pavel Valena <pvalena@redhat.com> - 0.0.32-1
 - Update to 0.0.32
+- Remove unnecessary 'runtime' from Requires
 
 * Tue Jan 05 2016 Pavel Valena <pvalena@redhat.com> - 0.0.30-3
 - Clear environment for scriptlets
