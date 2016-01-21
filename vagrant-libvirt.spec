@@ -22,14 +22,6 @@ Requires: %{?scl_prefix}rubygem(nokogiri) => 1.6.0
 Requires: %{?scl_prefix}rubygem(nokogiri) < 1.7
 Requires: %{?scl_prefix_ror}rubygem(multi_json)
 Requires: %{?scl_prefix_ruby}ruby(release)
-# vagrant-libvirt supports only kvm and qemu for now.
-#   https://github.com/pradels/vagrant-libvirt#provider-options
-# libvirt-daemon-kvm not available on RHEL 6
-%if 0%{?rhel} >= 7
-Requires: libvirt-daemon-kvm
-%else
-Requires: qemu-kvm
-%endif
 Requires: polkit
 Requires: %{?scl_prefix}vagrant
 BuildRequires: %{?scl_prefix}vagrant
@@ -136,6 +128,7 @@ getent group vagrant >/dev/null || groupadd -r vagrant
 - Add ruby(release) to Requires
 - Exclude hidden files
 - Remove libvirt from Requires
+- Remove qemu-kvm and libvirt-daemon-kvm from Requires
 
 * Tue Jan 05 2016 Pavel Valena <pvalena@redhat.com> - 0.0.30-3
 - Clear environment for scriptlets
