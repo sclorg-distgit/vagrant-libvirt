@@ -57,8 +57,8 @@ gem spec %{SOURCE0} -l --ruby > %{vagrant_plugin_name}.gemspec
 %build
 %{?scl:scl enable %{scl} - << \EOF}
 gem build %{vagrant_plugin_name}.gemspec
-%vagrant_plugin_install
 %{?scl:EOF}
+%vagrant_plugin_install
 
 %install
 mkdir -p %{buildroot}%{vagrant_plugin_dir}
@@ -129,6 +129,7 @@ getent group vagrant >/dev/null || groupadd -r vagrant
 - Remove libvirt from Requires
 - Remove qemu-kvm and libvirt-daemon-kvm from Requires
 - Remove unnecessary provide
+- %%vagrant_plugin_install macro does not need SCL enabled
 
 * Tue Jan 05 2016 Pavel Valena <pvalena@redhat.com> - 0.0.30-3
 - Clear environment for scriptlets
