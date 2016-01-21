@@ -29,7 +29,6 @@ BuildRequires: %{?scl_prefix_ror}rubygem(rspec) < 3
 BuildRequires: %{?scl_prefix}rubygem(fog-libvirt)
 BuildArch: noarch
 
-Provides: %{?scl_prefix}%{pkg_name} = %{version}-%{release}
 Provides: %{?scl_prefix}vagrant(%{vagrant_plugin_name}) = %{version}
 
 %description
@@ -129,6 +128,7 @@ getent group vagrant >/dev/null || groupadd -r vagrant
 - Exclude hidden files
 - Remove libvirt from Requires
 - Remove qemu-kvm and libvirt-daemon-kvm from Requires
+- Remove unnecessary provide
 
 * Tue Jan 05 2016 Pavel Valena <pvalena@redhat.com> - 0.0.30-3
 - Clear environment for scriptlets
