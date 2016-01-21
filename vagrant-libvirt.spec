@@ -113,7 +113,7 @@ getent group vagrant >/dev/null || groupadd -r vagrant
 %{vagrant_plugin_instdir}/locales
 %{vagrant_plugin_instdir}/tools
 %exclude %{vagrant_plugin_cache}
-%exclude %{vagrant_plugin_instdir}/.gitignore
+%exclude %{vagrant_plugin_instdir}/.*
 %{vagrant_plugin_spec}
 # TODO: Disabled for now, since this might have security implications.
 #%%exclude %%{_datadir}/polkit-1/rules.d/10-vagrant.rules
@@ -135,6 +135,7 @@ getent group vagrant >/dev/null || groupadd -r vagrant
 - Remove unnecessary 'runtime' from Requires
 - Remove specific version dependency for fog-libvirt
 - Add ruby(release) to Requires
+- Exclude hidden files
 
 * Tue Jan 05 2016 Pavel Valena <pvalena@redhat.com> - 0.0.30-3
 - Clear environment for scriptlets
