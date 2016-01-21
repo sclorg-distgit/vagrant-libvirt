@@ -4,8 +4,8 @@
 %global vagrant_plugin_name vagrant-libvirt
 
 Name: %{?scl_prefix}%{vagrant_plugin_name}
-Version: 0.0.30
-Release: 3%{?dist}
+Version: 0.0.32
+Release: 1%{?dist}
 Summary: libvirt provider for Vagrant
 Group: Development/Languages
 License: MIT
@@ -136,6 +136,9 @@ getent group vagrant >/dev/null || groupadd -r vagrant
 %{vagrant_plugin_instdir}/spec
 
 %changelog
+* Thu Jan 21 2016 Pavel Valena <pvalena@redhat.com> - 0.0.32-1
+- Update to 0.0.32
+
 * Tue Jan 05 2016 Pavel Valena <pvalena@redhat.com> - 0.0.30-3
 - Clear environment for scriptlets
 
