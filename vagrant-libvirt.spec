@@ -16,8 +16,7 @@ Requires(pre): shadow-utils
 Requires(posttrans): %{?scl_prefix}vagrant
 Requires(preun): %{?scl_prefix}vagrant
 
-Requires: %{?scl_prefix}rubygem(fog-libvirt) >= 0.0.1
-Requires: %{?scl_prefix}rubygem(fog-libvirt) < 0.1
+Requires: %{?scl_prefix}rubygem(fog-libvirt)
 Requires: %{?scl_prefix_ruby}ruby(rubygems)
 Requires: %{?scl_prefix}rubygem(nokogiri) => 1.6.0
 Requires: %{?scl_prefix}rubygem(nokogiri) < 1.7
@@ -133,6 +132,7 @@ getent group vagrant >/dev/null || groupadd -r vagrant
 * Thu Jan 21 2016 Pavel Valena <pvalena@redhat.com> - 0.0.32-1
 - Update to 0.0.32
 - Remove unnecessary 'runtime' from Requires
+- Remove specific version dependency for fog-libvirt
 
 * Tue Jan 05 2016 Pavel Valena <pvalena@redhat.com> - 0.0.30-3
 - Clear environment for scriptlets
