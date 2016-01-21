@@ -73,9 +73,6 @@ cp -a .%{vagrant_plugin_dir}/* \
 mkdir -p %{buildroot}%{vagrant_plugin_docdir}/polkit
 install -m 0644 %{SOURCE1} %{buildroot}%{vagrant_plugin_docdir}/polkit
 
-# Remove shebang from non-executable rakefile
-sed -i '1d' %{buildroot}%{vagrant_plugin_instdir}/Rakefile
-
 %check
 #pushd .%{vagrant_plugin_instdir}
 #sed -i '/:git/ s|:git.*$|:path => "%{vagrant_dir}"|' Gemfile
@@ -130,6 +127,7 @@ getent group vagrant >/dev/null || groupadd -r vagrant
 - Remove qemu-kvm and libvirt-daemon-kvm from Requires
 - Remove unnecessary provide
 - %%vagrant_plugin_install macro does not need SCL enabled
+- Shebang is already removed, no need to remove it
 
 * Tue Jan 05 2016 Pavel Valena <pvalena@redhat.com> - 0.0.30-3
 - Clear environment for scriptlets
