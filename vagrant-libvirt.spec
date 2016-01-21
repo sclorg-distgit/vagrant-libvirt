@@ -104,7 +104,7 @@ getent group vagrant >/dev/null || groupadd -r vagrant
 %{vagrant_plugin_spec}
 # TODO: Disabled for now, since this might have security implications.
 #%%exclude %%{_datadir}/polkit-1/rules.d/10-vagrant.rules
-%doc %{vagrant_plugin_instdir}/LICENSE
+%license %{vagrant_plugin_instdir}/LICENSE
 
 %files doc
 %doc %{vagrant_plugin_docdir}
@@ -128,6 +128,7 @@ getent group vagrant >/dev/null || groupadd -r vagrant
 - Remove unnecessary provide
 - %%vagrant_plugin_install macro does not need SCL enabled
 - Shebang is already removed, no need to remove it
+- Add %%license macro to LICENSE
 
 * Tue Jan 05 2016 Pavel Valena <pvalena@redhat.com> - 0.0.30-3
 - Clear environment for scriptlets
