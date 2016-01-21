@@ -21,6 +21,7 @@ Requires: %{?scl_prefix_ruby}ruby(rubygems)
 Requires: %{?scl_prefix}rubygem(nokogiri) => 1.6.0
 Requires: %{?scl_prefix}rubygem(nokogiri) < 1.7
 Requires: %{?scl_prefix_ror}rubygem(multi_json)
+Requires: %{?scl_prefix_ruby}ruby(release)
 Requires: libvirt
 # vagrant-libvirt supports only kvm and qemu for now.
 #   https://github.com/pradels/vagrant-libvirt#provider-options
@@ -133,6 +134,7 @@ getent group vagrant >/dev/null || groupadd -r vagrant
 - Update to 0.0.32
 - Remove unnecessary 'runtime' from Requires
 - Remove specific version dependency for fog-libvirt
+- Add ruby(release) to Requires
 
 * Tue Jan 05 2016 Pavel Valena <pvalena@redhat.com> - 0.0.30-3
 - Clear environment for scriptlets
